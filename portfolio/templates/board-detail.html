@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+{% block title %}<title>Main</title>{% endblock %}
+{% block content %}
+<div class="bd-title" style="font-family: Dosis, Helvetica, sans-serif">
+    <h3>{{ board.title }}</h3>
+</div>
+<div class="bd-info row">
+    <div>{{ board.name }}</div>
+    <div><i class="far fa-eye"></i>{{ board.views }}</div>
+</div>
+<div class="bd-time">
+    <i class="far fa-clock"></i>
+    <div style="display: inline">
+        {{ board.date }}
+    </div>
+</div>
+<div class="bd-memo">
+    
+    <p>{{ board.memo|linebreaks }}</p>
+</div>
+{% endblock %}

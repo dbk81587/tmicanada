@@ -1,0 +1,259 @@
+@media (max-width: 768px) {
+    .navbar {
+        position: relative;
+        display: block;
+        width: 100%;
+        text-align: center;
+
+    }
+    .nav-item .usericon {
+        display: none;
+    }
+    .nav-link .login {
+        display: none;
+    }
+    .nav-link .signup {
+        display: none;
+    }
+    .article-board {
+        margin: 0;
+        max-width: none;
+        padding: 0;
+    }
+
+
+}
+
+@media (max-width: 1200px) {
+    .topic-replies {
+        display: none;
+    }
+    .item-replies {
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .item-location,
+    .topic-header,
+    .item-views,
+    .item-lastpost {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .col-sm-3 {
+        width: 25%;
+        float: left;
+    }
+}
+
+
+.logo {
+    height: 35px;
+}
+
+.navbar-user .nav-link {
+    margin: 0;
+    padding: 5px;
+}
+
+.navbar-user {
+    margin-left: -10px;
+}
+
+.navborder {
+    margin-top: 0;
+    margin-bottom: 0;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.pagenav {
+    margin: 40px;
+    padding: 0;
+    margin-left: 15px;
+}
+
+footer {
+    clear: inherit;
+    position: relative;
+    left: 0;
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 10px 10px;
+    bottom: 0;
+    width: 100%;
+    margin-top: 100px;
+}
+
+footer p {
+    margin: auto;
+    padding: 30px 0;
+
+}
+
+.topiclist {
+    text-align: center;
+    font-weight: 500;
+
+}
+
+.list-group {
+    padding-right: 0;
+}
+
+.topic-title {
+    width: 60%;
+}
+
+.topic-views {
+    width: 10%;
+}
+
+.topic-replies {
+    width: 10%;
+}
+
+.topic-lastpost {
+    width: 20%;
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.item-location {
+    width: 15%;
+    padding: 0.5rem 0;
+}
+
+.item-title {
+    width: 45%;
+    padding: 0.5rem 0;
+    
+    text-overflow: ellipsis;
+}
+
+.item-views {
+    width: 10%;
+    padding: 0.5rem 0;
+    text-align: center;
+}
+
+.item-replies {
+    width: 10%;
+    padding: 0.5rem 0;
+    text-align: center;
+}
+
+.item-lastpost {
+    font-size: 15px;
+    width: 20%;
+    text-align: center;
+}
+
+.topic .col {
+    text-align: left;
+}
+
+.container {
+    min-height: 800px;
+    margin-top: 5rem
+}
+
+.signin-body {
+    margin: 0;
+}
+
+.btn-info {
+    background-color: #5bc0de;
+}
+
+small {
+    font-size: 65%;
+    font-weight: 400;
+    line-height: 1;
+    color: #999;
+}
+
+.label-primary {
+    background-color: #428bca;
+}
+
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+.register {
+    background-color: #428bca;
+    border-color: #428bca;
+}
+
+.topic {
+    min-height: 3rem;
+    padding: 2px 20px;
+}
+
+.bd-title {
+    text-align: center;
+    margin: 0 100px;
+    margin-top: 50px;
+    border-bottom: 2px solid #516B82;
+    padding: 0 100px;
+}
+
+.bd-info {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 100px;
+    background-color: #f1f1f1;
+    padding: 5px 10px;
+}
+
+.fa-eye {
+    padding: 3px 0;
+    margin: 0 5px;
+    font-size: 15px;
+}
+
+.bd-memo {
+    margin: 0 100px;
+}
+
+.bd-time {
+    margin: 0 100px;
+    margin-bottom: 50px;
+}
+
+.mainbody {
+    min-height: 80vh;
+}
+.usericon {
+    padding-left: 5px;
+}
+
+.pageandpost1 {
+    display: inline-block;
+}
+
+.pageandpost2 {
+    float: right;
+    padding: 40px 15px;
+    font-size: 11px;
+}

@@ -1,0 +1,74 @@
+{% extends "base_generic.html" %}
+{% load tz %}
+{% block title %}<title>Main</title>{% endblock %}
+{% block content %}
+    <div class="jumbotron" style="background-color: #e4dede">
+        <h1 style="font-family: Dosis, Helvetica, sans-serif">Share TMI <span style="font-size: 20px">(Too Much Information)</span> in Canada</h1>
+    </div>
+
+    <div class="container article-board">
+        <div class="topic-main">
+            <ul class="list-group topic-header">
+                <li class="list-group-item">
+                    <div class="topiclist row">
+                        <div class="topic-location">Location</div>
+                        <div class="topic-title col">Title</div>
+                        <div class="topic-views">Views</div>
+                        <div class="topic-replies">Replies</div>
+                        <div class="topic-lastpost">Posted by/Date</div>
+                    </div>
+                </li>
+            </ul>
+            {% if boardList %}
+            <ul class="list-group topic-body">
+                {% for boardRow in boards %}
+                <li class="list-group-item topic">
+                    <div class="topic-items row">
+                        <div class="item-location">{{ boardRow.location }}</div>
+                        <div class="item-title col"><a href="{% url 'board-detail' boardRow.pk %}">{{ boardRow.title }}</a></div>
+                        <div class="item-views">{{ boardRow.views }}</div>
+                        <div class="item-replies">{{ boardRow.replies }}</div>
+                        <div class="item-lastpost">{{ boardRow.name }}</div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No data</p>
+            {% endif %}
+        </div>
+        <div class="pageandpost justify-conten-between">
+            <div class="pageandpost1">
+            <ul class="pagination pagenav pagination-sm">
+               {% if boards.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page=1"><<</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ boards.previous_page_number }}"><</a></li>
+                {% else %}
+                <li class="page-item disabled"><a class="page-link" href="#"><<</a></li>
+                <li class="page-item disabled"><a class="page-link" href="#"><</a></li>
+                {% endif %}
+                {% for page in page_range %}
+                <li {% if page == boards.number %} class="page-item disabled" {% endif %}><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+                {% endfor %}
+                {% if boards.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ next_page }}">></a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ boards.paginator.num_pages }}">>></a></li>
+                {% else %}
+                <li class="page-item disabled"><a class="page-link" href="#">></a></li>
+                <li class="page-item disabled"><a class="page-link" href="#">>></a></li>
+                {% endif %}
+            </ul>
+            </div>
+            <div class="pageandpost2">
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'writepost' %}"> <button type="button" class="btn btn-primary post">Post</button></a>
+                    {% else %}
+                    <div class="post">(You must log in or sign up to post here.)</div>
+                    {% endif %}
+            </div>
+            </div>
+        
+
+
+    </div>
+    {% endblock %}
