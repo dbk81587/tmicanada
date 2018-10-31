@@ -5,7 +5,7 @@ from django.utils.translation import gettext, gettext_lazy as _
 from django.contrib.auth import (
     authenticate, get_user_model, password_validation,
 )
-from portfolio.models import Board
+from portfolio.models import Board, MPTTComment
 from django.forms import ModelForm
 from django.utils import timezone
 
@@ -57,3 +57,33 @@ class WritePostForm(ModelForm):
         "memo": "Text"
         }
         fields = ('name', 'location', 'title', 'memo')
+
+class MPTTCommentForm(ModelForm):
+    class Meta:
+        model=MPTTComment
+        fields = ('author', 'comment', 'parent')
+        widgets = {
+            'comment': forms.Textarea(attrs={
+                'id': 'post-text', 
+                'required': True, 
+                'placeholder': 'Say something...',
+                'rows': '3'
+            }),
+            'parent': forms.TextInput(attrs={
+                'value': '{{ parent.id }}'
+
+            })
+        }
+
+""" class ReplyForm(ModelForm):
+    class Meta:
+        model=MPTTComment
+        fields = ('author', 'comment', 'parent')
+        widgets = {
+            'comment': forms.Textarea(attrs={
+                'id': 'post-text', 
+                'required': True, 
+                'placeholder': 'Say something...',
+                'rows': '3'
+            }),
+        } """

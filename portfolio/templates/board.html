@@ -1,6 +1,7 @@
 {% extends "base_generic.html" %}
 {% load tz %}
-{% block title %}<title>Main</title>{% endblock %}
+{% load portfolio_extras %}
+{% block title %}<title>TMI Canada</title>{% endblock %}
 {% block content %}
     <div class="jumbotron" style="background-color: #e4dede">
         <h1 style="font-family: Dosis, Helvetica, sans-serif">Share TMI <span style="font-size: 20px">(Too Much Information)</span> in Canada</h1>
@@ -25,10 +26,10 @@
                 <li class="list-group-item topic">
                     <div class="topic-items row">
                         <div class="item-location">{{ boardRow.location }}</div>
-                        <div class="item-title col"><a href="{% url 'board-detail' boardRow.pk %}">{{ boardRow.title }}</a></div>
+                        <div class="item-title col"><a href="{% url 'board-detail' boardRow.pk %}">{{ boardRow.title }} </a></div>
                         <div class="item-views">{{ boardRow.views }}</div>
-                        <div class="item-replies">{{ boardRow.replies }}</div>
-                        <div class="item-lastpost">{{ boardRow.name }}</div>
+                        <div class="item-replies">{{ boardRow.commentss.count }}</div>
+                        <div class="item-lastpost">{{ boardRow.name }} <br> {{ boardRow.created_at|timesince|upto:',' }} ago</div>
                     </div>
                 </li>
                 {% endfor %}

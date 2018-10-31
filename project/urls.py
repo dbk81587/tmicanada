@@ -22,10 +22,11 @@ from django.views.generic.dates import ArchiveIndexView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('board', views.board, name='board'),
-    path(r'^board/(?P<pk>\d+)/$', views.BoardDetail.as_view(), name='board-detail'),
+    path(r'board', views.board, name='board'),
+    path('board/<int:pk>', views.BoardDetail.as_view(), name='board-detail'),
     path('accounts/', include('django.contrib.auth.urls')),
-    path(r'^accounts/signup$', views.CreateUserView.as_view(), name='signup'),
+    path(r'^accounts/signup', views.CreateUserView.as_view(), name='signup'),
     path(r'^accounts/signup/signup_done', views.RegisteredView.as_view(), name='signup_done'),
-    path(r'^board/writepost$', views.WritePostView.as_view(), name='writepost'),
+    path(r'^board/writepost', views.WritePostView.as_view(), name='writepost'),
+    path('board/<int:pk>/remove', views.comment_remove, name='comment_remove'),
 ]
