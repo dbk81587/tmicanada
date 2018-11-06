@@ -26,7 +26,7 @@ SECRET_KEY = '=#+^7xn8yq!(*v)*p!(2^c5d=7f&ogr$7jo8lihth$j_cml15@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', '.pythonanywhere.com']
 
 
 # Application definition
@@ -86,6 +86,7 @@ DATABASES = {
         'PASSWORD': 'project1104',
         'HOST': 'dbk81587.mysql.pythonanywhere-services.com',
         'PORT': '',
+
     }
 }
 
