@@ -87,6 +87,7 @@ DATABASES = {
         'HOST': 'dbk81587.mysql.pythonanywhere-services.com',
         'PORT': '',
 
+
     }
 }
 
