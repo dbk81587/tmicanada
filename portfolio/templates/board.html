@@ -47,13 +47,14 @@
         <div class="mr-auto">
             <ul class="pagination pagenav pagination-sm">
                 {% if page_obj.has_previous %}
-                <li class="page-item"><a class="page-link" href="?page=1">
-                        <<</a> </li> <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">
-                                <</a> </li> {% else %} <li class="page-item disabled"><a class="page-link" href="#">
-                                        <<</a> </li> <li class="page-item disabled"><a class="page-link" href="#">
-                                                <</a> </li> {% endif %} {% for page in page_range %} <li {% if page==page_obj.number
-                                                    %} class="page-item disabled" {% endif %}><a class="page-link" href="?page={{ page }}">{{
-                                                        page }}</a></li>
+                <li class="page-item"><a class="page-link" href="?page=1"></a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}"></a></li>
+                {% else %}
+                <li class="page-item disabled"><a class="page-link" href="#"> </a></li>
+                <li class="page-item disabled"><a class="page-link" href="#"></a></li>
+                {% endif %}
+                {% for page in page_range %}
+                <li {% if page==page_obj.number %} class="page-item disabled" {% endif %}><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
                 {% endfor %}
                 {% if page_obj.has_next %}
                 <li class="page-item"><a class="page-link" href="?page={{ next_page }}">></a></li>
