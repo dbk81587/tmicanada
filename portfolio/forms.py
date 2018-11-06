@@ -74,16 +74,3 @@ class MPTTCommentForm(ModelForm):
 
             })
         }
-
-""" class ReplyForm(ModelForm):
-    class Meta:
-        model=MPTTComment
-        fields = ('author', 'comment', 'parent')
-        widgets = {
-            'comment': forms.Textarea(attrs={
-                'id': 'post-text', 
-                'required': True, 
-                'placeholder': 'Say something...',
-                'rows': '3'
-            }),
-        } """

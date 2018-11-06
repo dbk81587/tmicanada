@@ -7,8 +7,12 @@
     <h3>{{ board.title }}</h3>
 </div>
 <div class="bd-info">
-    <div>{{ board.name }}</div>
-    <div><i class="far fa-eye"></i>{{ board.views }}</div>
+    <div>{{ board.name }}{% if user.is_authenticated %}{% if user.username == board.name %}<a href="{% url 'board_remove' pk=board.pk %}"><button type="button" class="btn btn-xs" style="margin-left:10px">delete</button></a>
+        <a href="{% url 'board_update_form' pk=board.pk %}"><button type="button" class="btn btn-xs" style="margin-left:10px">edit</button></a>
+        {% endif %}
+        {% endif %}
+    </div>
+    <div><i class="far fa-eye ml-auto"></i>{{ board.views }}</div>
 </div>
 <div class="bd-time">
     <i class="far fa-clock"></i>
@@ -22,17 +26,7 @@
    
 </div>
 <p>Comment as {{ user.get_username }}</p>
-    <form method="POST">    
-        {% csrf_token %}
-        <input type="hidden" id="author" name="author" value="{{ user.get_username }}">
-        <div class="fieldWrapper" id="the_post">
-        {{ form.comment|addcss:"form-control" }}
-        </div>
-        <div class="d-flex flex-row-reverse" style="margin: 10px 10px">
-        <div id="results"></div>
-        <button type="submit" class="save btn btn-default" id="commentsub">Comment</button>
-        </div>
-    </form>
+{% include 'comments/form.html' %}
 <hr>
 <div class="comment-body">
     
@@ -40,33 +34,4 @@
 </div>
 {% endblock %}
 {% block javascript%}
-    <!--<script type="text/javascript">
-        $('#post-form').on('submit', function(event){
-    event.preventDefault();
-    console.log("form submitted!")  // sanity check
-    create_post();
-    });
-    function create_post() {
-    console.log("create post is working!") // sanity check
-    $.ajax({
-        url : "", // the endpoint
-        type : "POST", // http method
-        data : { the_post : $('#post-text').val() }, // data sent with the post request
-
-        // handle a successful response
-        success : function(html) {
-            console.log(html);
-            console.log("success"); // another sanity check
-        },
-
-        // handle a non-successful response
-        error : function(xhr,errmsg,err) {
-            $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
-                " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
-            console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
-        }
-    });
-};
-    
-        </script>  -->
-        {% endblock %}
+{% endblock %}

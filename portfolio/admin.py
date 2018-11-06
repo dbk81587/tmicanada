@@ -2,6 +2,7 @@ from django.contrib import admin
 from portfolio.models import Board, MPTTComment
 from mptt.admin import DraggableMPTTAdmin
 
+
 # Register your models here.
 @admin.register(Board)
 class BoardAdmin(admin.ModelAdmin):
@@ -9,4 +10,4 @@ class BoardAdmin(admin.ModelAdmin):
 
 @admin.register(MPTTComment)
 class MPTTCommentAdmin(admin.ModelAdmin):
-    list_display = ('parent', 'author', 'comment', 'created_at')
+    list_display = ('board', 'parent', 'author', 'comment', 'created_at')

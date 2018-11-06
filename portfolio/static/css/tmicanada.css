@@ -100,6 +100,10 @@ footer p {
 
 }
 
+.topic-header{
+    border-bottom: 3px solid #428bca;
+}
+
 .list-group {
     padding-right: 0;
 }
@@ -243,22 +247,16 @@ small {
     padding: 0 50px;
 }
 
-
-.pageandpost1 {
-    display: inline-block;
+.postbutton {
+    padding: 40px 0;
+    margin-right: 30px;
 }
 
-.pageandpost2 {
-    float: right;
-    padding: 40px 15px;
-    font-size: 11px;
-}
 
 .comment {
-    
     justify-content: space-between;
     background-color: #f1f1f1;
-    padding: 5px 10px;
+    padding: 5px 20px;
     white-space: normal;
     word-break:normal;
     margin-bottom: 5px;
@@ -321,3 +319,4 @@ small {
     line-height: 1.5;
     border-radius: 3px;
 }
+

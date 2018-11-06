@@ -18,45 +18,52 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
+from django.views.generic.edit import UpdateView
+import operator
+from django.db.models import Q
+from functools import reduce
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
 
+class BoardListView(ListView):
+    model = Board
+    template_name = "board.html"
+    context_object_name = 'boards'
+    paginate_by = 10
+    def get_context_data(self, **kwargs):
+        context = super(BoardListView, self).get_context_data(**kwargs)
+        paginator = context['paginator']
+        page_numbers_range = 5
+        max_index = len(paginator.page_range)
 
-def board(request):
-    boardList = Board.objects.all()
-    paginator = Paginator(boardList, 10)
-    max_index = len(paginator.page_range)
+        page = self.request.GET.get('page')
+        current_page = int(page) if page else 1
 
-    page = request.GET.get('page')
-    boards = paginator.get_page(page)
-    page_numbers_range = 5
-    current_page = int(page) if page else 1
-    start_index = int((current_page - 1) / page_numbers_range) * page_numbers_range
-    end_index = start_index + page_numbers_range
-    page_range = paginator.page_range[start_index:end_index]
-    next_page = start_index + 6
-    now = timezone.now
-   
+        start_index = int((current_page - 1) / page_numbers_range) * page_numbers_range
+        end_index = start_index + page_numbers_range
+        if end_index >= max_index:
+            end_index = max_index
 
-    
-    if end_index >= max_index:
-        end_index = max_index
-    context = {
-        'boardList': boardList,
-        'paginator': paginator,
-        'page': page,
-        'boards': boards,
-        'page_range': page_range,
-        'max_index': max_index,
-        'current_page': current_page,
-        'start_index': start_index,
-        'end_index': end_index,
-        'page_numbers_range': page_numbers_range,
-        'next_page': next_page,
-        'now' : now,
-        }
-    return render(request, 'board.html', context=context)
+        page_range = paginator.page_range[start_index:end_index]
+        context['page_range'] = page_range
+        return context
+
+class BoardSearchListView(BoardListView):
+    def get_queryset(self):
+        result = super(BoardSearchListView, self).get_queryset()
+
+        query = self.request.GET.get('q')
+        if query:
+            query_list = query.split()
+            result = result.filter(
+                reduce(operator.and_,
+                       (Q(title__icontains=q) for q in query_list)) |
+                reduce(operator.and_,
+                       (Q(memo__icontains=q) for q in query_list))
+            )
+
+        return result
 
 class BoardDetail(DetailView, CreateView):
     model = Board
@@ -73,12 +80,6 @@ class BoardDetail(DetailView, CreateView):
     def get_success_url(self):
         return reverse('board-detail', kwargs={'pk': self.kwargs['pk']})
     
-    
-    
-    
-    
-    
-
 class CreateUserView(CreateView):
     template_name = 'registration/signup.html'
     form_class =  CreateUserForm
@@ -98,14 +99,27 @@ def comment_remove(request, pk):
     mpttcomment = get_object_or_404(MPTTComment, pk=pk)
     mpttcomment.delete()
     return redirect('board-detail', pk=mpttcomment.board.pk)
-    
-""" class Reply(CreateView, DetailView):
-    template_name = '_comments.html'
-    form_class = ReplyForm
-    success_url = reverse_lazy('board')
-    def form_valid(self, form):
-        form.instance.board_id = self.kwargs.get('pk')
-        form.instance.mpttcomment_parent_id = self.kwargs.get('pk')
-        return super().form_valid(form)
+
+@login_required
+def board_remove(request, pk):
+    boardobject = get_object_or_404(Board, pk=pk)
+    boardobject.delete()
+    return redirect('board')
+
+class BoardUpdate(UpdateView):
+    model = Board
+    fields = ['memo']
+    template_name = 'board_update_form.html'
     def get_success_url(self):
-        return reverse('board-detail', kwargs={'pk': self.kwargs['pk']}) """
+        return reverse('board-detail', kwargs={'pk': self.kwargs['pk']})
+
+class CommentUpdate(UpdateView):
+    model = MPTTComment
+    fields = ['comment']
+    template_name = 'comment_update_form.html'
+    def get_object(self):
+        """Returns the BlogPost instance that the view displays"""
+        return get_object_or_404(MPTTComment, id=self.kwargs.get("id"))
+    def get_success_url(self):
+        return reverse('board-detail', kwargs={'pk': self.kwargs['pk']})
+

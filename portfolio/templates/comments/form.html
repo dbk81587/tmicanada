@@ -1,0 +1,13 @@
+{% load portfolio_extras %}
+{% load mptt_tags %}
+<form method="POST" id="post-form" action="{% url 'board-detail' pk=board.pk %}">    
+    {% csrf_token %}
+    <input type="hidden" id="author" name="author" value="{{ user.get_username }}">
+    <div class="fieldWrapper" id="the_post">
+    {{ form.comment|addcss:"form-control" }}
+    </div>
+    <div class="d-flex flex-row-reverse" style="margin: 10px 10px">
+    <div id="results"></div>
+    <button type="submit" class="save btn btn-default" id="commentsub">Comment</button>
+    </div>
+</form>

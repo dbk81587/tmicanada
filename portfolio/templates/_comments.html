@@ -2,14 +2,12 @@
 {% load portfolio_extras %}
 {% recursetree board.commentss.all %}
 
-
-<div id="talk">
-    <div class="comment d-flex justify-content-between row">
-        {{ node.id }} {{ node.parent }}
-            <div class="col">{{ node.author }}{% if user.is_authenticated %}{% if user.username == node.author %}
-                <a href="{% url 'comment_remove' pk=node.id %}"><button type="button" class="btn btn-xs">delete</button></a> 
+    <div class="comment row">
+            <div>{{ node.author }}{% if user.is_authenticated %}{% if user.username == node.author %}
+                <a href="{% url 'comment_remove' pk=node.id %}"><button type="button" class="btn btn-xs" style="margin-left:10px">delete</button></a>
+                <a href="{% url 'comment_update_form' pk=board.pk id=node.id %}"><button type="button" class="btn btn-xs" style="margin-left:3px">edit</button></a> 
                 {% endif %}</div>
-            <div class="col" style="text-align: end">{{ node.created_at|timesince|upto:',' }} ago</div>
+            <div style="text-align: end">{{ node.created_at|timesince|upto:',' }} ago</div>
     </div>
     <div class="row">
         <span class="comment-username">{% if node.parent.author %}@{{ node.parent.author }}{%endif%}</span><p>{{ node.comment|linebreaks }}</p>
@@ -18,12 +16,14 @@
 <div style="margin-bottom:10px">
 
 {% endif %}
+{% if node.author != user.username %}
 <button type="button" class="btn btn-info btn-xs" data-toggle="collapse" data-target="#c{{ node.id }}">Reply</button>
+{% endif %}
 <div id="c{{ node.id }}" class="collapse" style="margin-top:15px">
     <form method="POST" action="">
         {% csrf_token %}
         <input type="hidden" id="author" name="author" value="{{ user.get_username }}">
-        <div class="fieldWrapper" id="the_post">
+        <div>
         {{ form.comment|addcss:"form-control" }}
         </div>
         {% if node.id %}    
@@ -31,10 +31,9 @@
         {% endif %}
         <div class="d-flex flex-row-reverse" style="margin: 10px 10px">
             <div id="results"></div>
-            <button type="submit" class="save btn btn-default btn-sm" id="commentsub">Reply</button>
+            <button type="submit" class="save btn btn-default btn-sm">Reply</button>
         </div>
     </form>
-</div>
 </div>
 </div>
 {% if not node.is_leaf_node %}
@@ -44,5 +43,4 @@
     </div>
 </div>
 {% endif %}
-
 {% endrecursetree %}
