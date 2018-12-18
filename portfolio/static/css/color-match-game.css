@@ -1,0 +1,159 @@
+.startbtn {
+    font-family: 'Hind Guntur', sans-serif;
+    font-size: 20px;
+    line-height: 1;
+    color: #fff;
+    letter-spacing: 0.025em;
+  
+    background: #379aff;
+    padding: 10px 0;
+    cursor: pointer;
+    border: 0;
+    border-radius: 2px;
+    min-width: 120px;
+    height: 50px;
+    overflow: hidden;
+  
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    transition: background-color 0.3s, min-width 0.3s, font-size 0.3s, opacity 0.3s, visibility 0.3s;
+}
+
+.startbtn:hover {
+    background-color: #3366ff;
+    min-width: 150px;
+    font-size: 25px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.countdown {
+    font-family: sans-serif;
+    color: cornflowerblue;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 6rem;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin: 0;
+    cursor: default;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+.myCanvas { 
+    background: #eee; display: block; margin: 0 auto;
+}
+
+#svgmain {
+    display: none;
+}
+
+span.svgmainsp {
+    font-family: sans-serif;
+    color: cornflowerblue;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 6rem;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin: 0;
+    cursor: default;
+}
+
+.score {
+    position: absolute;
+    font-size: 30px;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Bungee', cursive;
+    color: #FFFFFF;
+}
+
+.timer {
+    position: absolute;
+    background-color: #FFFFFF;
+    top: 90%;
+    width: 100%;
+    height: 0.5rem;
+}
+
+.timer-done {
+    position: absolute;
+    background-color: #FFFFFF;
+    top: 90%;
+    width: 0%;
+    height: 0.5rem;
+    transition-duration: 20s;
+    transition-timing-function: linear;
+}
+
+.svgtext {
+    font: bold 50px sans-serif;
+}
+
+.OX {
+    width: 250px;
+    height: 50px;
+    position: absolute;
+    border-radius: 10px;
+    top:70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#O {
+    font-size: 40px;
+    color: rgb(94, 160, 41);
+    outline: 0;
+    border: 0;
+    background: #d8dcdf;
+    border-radius: 10px;
+    width: 125px;
+    height: 50px;
+    text-align: center;
+    float: left;
+}
+
+#X {
+    font-size: 40px;
+    color: rgb(228, 23, 23);
+    outline: 0;
+    border: 0;
+    float: left;
+    background: #d8dcdf;
+    border-radius: 10px;
+    width: 125px;
+    height: 50px;
+    text-align: center;
+}
+
+#loader 
+{ fill: #0088cc }
+
+#border 
+{ fill: #00517a }
+
+.restart {
+    position: absolute;
+    visibility: hidden;
+    top: 96%;
+    left: 5%;
+    transform: translate(-50%, -50%);
+    background: #379aff;
+    width: 80px;
+    height: 30px;
+    border: 0;
+    color: #FFF;
+}

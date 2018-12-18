@@ -79,3 +79,9 @@ header .container-fluid {
   margin-bottom: 100px;
   background-image: url("images/profile5.jpg");
 }
+
+.cmg {
+  width: 100%;
+  height: 119px;
+  object-fit: scale-down;
+}

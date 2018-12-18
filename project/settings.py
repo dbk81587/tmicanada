@@ -32,14 +32,16 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', '.pythonanywhere.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'portfolio',
+    'mptt',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mptt',
-    'portfolio',
+    
+    
     
 ]
 
@@ -81,12 +83,11 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dbk81587$project',
-        'USER': 'dbk81587',
+        'NAME': 'project',
+        'USER': 'root',
         'PASSWORD': 'project1104',
-        'HOST': 'dbk81587.mysql.pythonanywhere-services.com',
-        'PORT': '',
-
+        'HOST': 'localhost',
+        'PORT': '3306',
 
     }
 }
@@ -135,4 +136,5 @@ STATICFILES_DIRS = (
 
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = 'board'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")

@@ -33,4 +33,5 @@ urlpatterns = [
     path('board/<int:pk>/editboard', views.BoardUpdate.as_view(), name='board_update_form'),
     path('board/<int:pk>/<int:id>editcomment', views.CommentUpdate.as_view(), name='comment_update_form'),
     path('board/search', views.BoardSearchListView.as_view(), name='board_search_list_view'),
+    path('color-match-game', views.ColorMatchGame.as_view(), name='color-match-game'),
 ]

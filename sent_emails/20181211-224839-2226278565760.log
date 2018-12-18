@@ -1,0 +1,33 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Content-Type: text/plain;
+ charset="utf-8"MIME-Version: 1.0Content-Transfer-Encoding: 7bitSubject:
+ Password reset on 127.0.0.1:8000From: webmaster@localhostTo:
+ will@wsvincent.comDate: Mon,
+ 22 Oct 2018 16:48:08 -0000Message-ID:
+ <154022688842.8329.13335839467917011243@1.0.0.127.in-addr.arpa>You're
+ receiving this email because you requested a password reset for your user
+ account at 127.0.0.1:8000.Please go to the following page and choose a new
+ password:http://127.0.0.1:8000/accounts/reset/MQ/50n-794b1459497cbe0ed399/Your
+ username,
+ in case you've forgotten: wsvThanks for using our site!The 127.0.0.1:8000
+ team
+From: webmaster@localhost
+To: beeneu@gmail.com
+Date: Wed, 12 Dec 2018 04:48:39 -0000
+Message-ID: <154459011990.5544.14300876556211182880@DESKTOP-3AV7AJD>
+
+
+To initiate the password reset process for your beeneu TestSite Account,
+click the link below:
+
+http://127.0.0.1:8000/accounts/reset/NA/521-064e754c649b57814863/
+
+If clicking the link above doesn't work, please copy and paste the URL in a new browser
+window instead.
+
+Sincerely,
+The TestSite Team
+
+-------------------------------------------------------------------------------

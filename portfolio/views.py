@@ -5,6 +5,7 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView, DetailView, FormView
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.views import LoginView
 from django.views import generic
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
@@ -22,6 +23,7 @@ from django.views.generic.edit import UpdateView
 import operator
 from django.db.models import Q
 from functools import reduce
+from django.conf import settings
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -85,6 +87,8 @@ class CreateUserView(CreateView):
     form_class =  CreateUserForm
     success_url = reverse_lazy('signup_done')
 
+
+
 class RegisteredView(TemplateView):
     template_name = 'registration/signup_done.html'
 
@@ -123,3 +127,5 @@ class CommentUpdate(UpdateView):
     def get_success_url(self):
         return reverse('board-detail', kwargs={'pk': self.kwargs['pk']})
 
+class ColorMatchGame(TemplateView):
+    template_name = 'color-match-game.html'
