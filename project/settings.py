@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    
-    
+
+
+
 ]
 
 
@@ -83,11 +83,12 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'project',
-        'USER': 'root',
+        'NAME': 'dbk81587$project',
+        'USER': 'dbk81587',
         'PASSWORD': 'project1104',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'HOST': 'dbk81587.mysql.pythonanywhere-services.com',
+        'PORT': '',
+
 
     }
 }
@@ -109,6 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+
 ]
 
 

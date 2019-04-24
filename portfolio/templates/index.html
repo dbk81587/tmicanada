@@ -12,17 +12,26 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
     crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-138260811-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-138260811-1');
+</script>
 </head>
 
 <body>
   <header>
     <div class="container-fluid ">
       <div class="header-block d-flex justify-content-between">
-        <div style="font-size:14px"><i class="fas fa-file-download">resume</i></div>
+        <div style="font-size:20px"><a href="{% static 'Resume(DongbiKim).pdf' %}"><i class="fas fa-file-download">Resume</i></a></div>
         <img src="{% static 'img/logo.png' %}" alt='logo' class="logo">
         <ul class="list-group icons" style="font-size:10px">
           <a href="http://github.com/dbk81587?tab=repositories" target="_blank"><i class="fab fa-github"></i></a>
-          <i class="fab fa-linkedin"></i>
+          <a href="https://www.linkedin.com/in/dongbi-kim-775759179/" target="_blank"><i class="fab fa-linkedin"></i></a>
           <a href="https://twitter.com/DongbiKim" target="_blank"><i class="fab fa-twitter"></i></a>
         </ul>
       </div>
@@ -33,6 +42,45 @@
 
   </div>
   <div class="container">
+    <div class="row">
+        <div class="col-md-7">
+          <a href="https://pocketnote.herokuapp.com">
+            <img class="img-fluid rounded mb-3 mb-md-0 cmg" src="{% static 'img/pocketnote.PNG' %}" alt="">
+          </a>
+        </div>
+        <div class="col-md-5">
+          <h3>Simple Memo App</h3>
+          <p>React.js, Redux, Express.js, Material CSS, Heroku</p>
+          <a class="btn btn-secondary" href="https://pocketnote.herokuapp.com">View Project</a>
+        </div>
+      </div>
+      <hr>
+    <div class="row">
+      <div class="col-md-7">
+        <a href="https://multi-counter-app.firebaseapp.com">
+          <img class="img-fluid rounded mb-3 mb-md-0 cmg" src="{% static 'img/MCA.PNG' %}" alt="">
+        </a>
+      </div>
+      <div class="col-md-5">
+        <h3>Multi Counter App</h3>
+        <p>React.js, Redux, Bootstrap, Firebase</p>
+        <a class="btn btn-secondary" href="https://multi-counter-app.firebaseapp.com">View Project</a>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-7">
+        <a href="{% url 'color-match-game' %}">
+          <img class="img-fluid rounded mb-3 mb-md-0 cmg" src="{% static 'img/cmg.PNG' %}" alt="">
+        </a>
+      </div>
+      <div class="col-md-5">
+        <h3>Color Match Game</h3>
+        <p>HTML, CSS, Javascript</p>
+        <a class="btn btn-secondary" href="{% url 'color-match-game' %}">View Project</a>
+      </div>
+    </div>
+    <hr>
     <div class="row">
       <div class="col-md-7" style="text-align: center">
         <a href="{% url 'board' %}">
@@ -45,25 +93,11 @@
         <a class="btn btn-secondary" href="{% url 'board' %}">View Project</a>
       </div>
     </div>
-    <hr>
-    <div class="row">
-      <div class="col-md-7">
-        <a href="{% url 'color-match-game' %}">
-          <img class="img-fluid rounded mb-3 mb-md-0 cmg" src="{% static 'img/cmg.png' %}" alt="">
-        </a>
-      </div>
-      <div class="col-md-5">
-        <h3>Color Match Game</h3>
-        <p>HTML, CSS, Javascript</p>
-        <a class="btn btn-secondary" href="{% url 'color-match-game' %}">View Project</a>
-      </div>
-
-    </div>
   </div>
 
   <footer class="tail">
-    <div>
-      <p>Copyright © Dongbi Kim 2018 ~</p>
+    <div class="d-flex flex-row justify-content-around">
+      <div><p>Email: dbk81587@gmail.com</P></div> <div><p>Cell: (204)557-5665</p></div>
     </div>
   </footer>
   <script src="{% static 'js/jquery-3.3.1.js' %}"></script>
