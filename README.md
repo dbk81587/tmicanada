@@ -4,7 +4,7 @@ A typical forum site that allows user to signup, login, post, edit, delete, shar
 
 Go **[here](https://dbk81587.pythonanywhere.com/board)** for live demo.
 
---- | ---
+---
 
 ![TMICANADA](https://user-images.githubusercontent.com/40073162/56700757-ddf82e80-66c9-11e9-92d7-893c9ac43b16.jpeg)
 
