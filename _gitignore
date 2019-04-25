@@ -6,7 +6,6 @@ db.sqlite3
 /static
 .DS_Store
 
- __pycache__/
- bin/
- include/
- lib/
+/project/bin/
+/project/include/
+/project/lib/
