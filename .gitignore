@@ -1,0 +1,6 @@
+project/__pycache__
+project/bin
+project/include
+project/lib
+db.sqlite3
+sent_emails/
