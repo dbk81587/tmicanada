@@ -1,0 +1,38 @@
+{% extends "base_generic.html" %}
+{% load portfolio_extras %}
+{% load mptt_tags %}
+{% block title %}<title>{{ board.title }}</title>{% endblock %}
+{% block content %}
+<div class="bd-title" style="font-family: Dosis, Helvetica, sans-serif">
+    <h3>{{ board.title }}</h3>
+</div>
+<div class="bd-info">
+    <div>{{ board.name }}{% if user.is_authenticated %}{% if user.username == board.name %}<a href="{% url 'board_remove' pk=board.pk %}"><button
+                type="button" class="btn btn-xs" style="margin-left:10px">delete</button></a>
+        <a href="{% url 'board_update_form' pk=board.pk %}"><button type="button" class="btn btn-xs" style="margin-left:10px">edit</button></a>
+        {% endif %}
+        {% endif %}
+    </div>
+    <div><i class="far fa-eye ml-auto"></i>{{ board.views }}</div>
+</div>
+<div class="bd-time">
+    <i class="far fa-clock"></i>
+    <div style="display: inline">
+        {{ board.created_at|date:"y-m-d" }} at {{ board.created_at|date:"fa" }}
+    </div>
+</div>
+<div class="bd-memo">
+
+    <p>{{ board.memo|linebreaks }}</p>
+
+</div>
+<p>Comment as {{ user.get_username }}</p>
+{% include 'comments/form.html' %}
+<hr>
+<div class="comment-body">
+
+    {% include '_comments.html' %}
+</div>
+{% endblock %}
+{% block javascript%}
+{% endblock %}
