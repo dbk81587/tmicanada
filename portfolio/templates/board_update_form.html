@@ -1,9 +1,0 @@
-{% extends "base_generic.html" %}
-{% load portfolio_extras %}
-{% load mptt_tags %}
-{% block content %}
-<form method="post">{% csrf_token %}
-    {{ form.memo|addcss:"form-control" }}
-    <button type="submit" value="Update" class="save btn btn-info" id="commentsub" style="margin-top:20px">Edit</button>
-</form>
-{% endblock %}
